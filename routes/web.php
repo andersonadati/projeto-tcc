@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\userController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,6 @@ Route::get('/', function () {
 });
 
 Route::resource('agenda', AgendaController::class);
+
+Route::resource('user', UserController::class);
+
