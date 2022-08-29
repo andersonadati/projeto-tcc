@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cadernos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('users_id');
+            $table->integer('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
