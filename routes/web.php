@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CadernoController;
+
 
 
 /*
@@ -24,4 +26,7 @@ Route::get('/', function () {
 Route::resource('agenda', AgendaController::class);
 
 Route::resource('user', UserController::class);
+
+Route::resource('caderno', CadernoController::class);
+
 
