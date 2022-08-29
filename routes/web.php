@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CadernoController;
+use App\Http\Controllers\FolhaCadernoController;
+
 
 
 
@@ -28,5 +30,8 @@ Route::resource('agenda', AgendaController::class);
 Route::resource('user', UserController::class);
 
 Route::resource('caderno', CadernoController::class);
+
+Route::resource('folha', FolhaCadernoController::class);
+
 
 
