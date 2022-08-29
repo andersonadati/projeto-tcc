@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('agenda_id');
-            $table->integer('diasSemana_id');
+            $table->integer('agenda_id')->references('id')->on('agenda');
+            $table->integer('diasSemana_id')->references('id')->on('dias_semana');
             $table->timestamps();
         });
     }
