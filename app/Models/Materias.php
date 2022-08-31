@@ -12,4 +12,8 @@ class Materias extends Model
     protected $fillable = [
         'name', 'agenda_id', 'diasSemana_id'
     ];
+
+    public function materias(){
+        return $this->belongsTo(Agenda::class, "agenda_id");
+    }
 }

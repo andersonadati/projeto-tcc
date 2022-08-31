@@ -18,21 +18,24 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
+            <th>id</th>
             <th>Name</th>
-            <th>Details</th>
+            <th>user_id</th>
             <th width="280px">Action</th>
         </tr>
 
-        @foreach ($agenda as $item)
+        
+        @foreach ($materias as $materia)
+
+        <?php //dd($materias ); ?>
         <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{ $item->name }}</td>
-            <td>{{ $item->user_id }}</td>
+            <td>{{ $materia->id }}</td>
+            <td>{{ $materia->name }}</td>
+            <td>{{ $materia->agenda_id }}</td>
             <td>
-                <form action="{{ route('agenda.destroy',$item->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('agenda.show',$item->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('agenda.edit',$item->id) }}">Edit</a>
+                <form action="{{ route('agenda.destroy',$materia->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('agenda.show',$materia->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('agenda.edit',$materia->id) }}">Edit</a>
 
                     @csrf
                     @method('DELETE')

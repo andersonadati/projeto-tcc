@@ -22,10 +22,10 @@ use App\Http\Controllers\MateriasController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', AgendaController::class);
 
+
+//todos os cruds
 Route::resource('agenda', AgendaController::class);
 
 Route::resource('user', UserController::class);

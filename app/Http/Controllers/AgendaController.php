@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\Materias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,10 +11,10 @@ class AgendaController extends Controller
 {
     public function index()
     {
-        //query
-        $agenda = Agenda::latest()->paginate(5);
-
-        return view('agenda.index',compact('agenda'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $agenda = DB::table('agendas')->where('user_id', 1)->first();
+        $materias = DB::table('materias')->orderBy('diasSemana_id')->where('agenda_id', $agenda->id)->get();
+        //dd($materias );
+        return view('dashboard.index',compact('agenda', 'materias'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
@@ -25,10 +26,12 @@ class AgendaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'user_id' => 'required',
         ]);
 
-        Agenda::create($request->all());
+        Agenda::create([
+            'name' =>$request->name,
+            'user_id' => 2
+        ]);
 
         return redirect()->route('agenda.index')->with('success','agenda created successfully.');
     }
@@ -47,7 +50,6 @@ class AgendaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'user_id' => 'required',
         ]);
 
         $agenda->update($request->all());
