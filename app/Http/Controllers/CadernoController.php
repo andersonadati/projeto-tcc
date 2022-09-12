@@ -24,6 +24,7 @@ class CadernoController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'user_id' => 'required',
         ]);
 
         Caderno::create($request->all());
@@ -45,7 +46,7 @@ class CadernoController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'user_id' => 'required',
         ]);
 
         $caderno->update($request->all());

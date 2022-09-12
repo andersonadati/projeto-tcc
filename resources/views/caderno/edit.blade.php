@@ -26,7 +26,7 @@
     <form action="{{ route('caderno.update',$caderno->id) }}" method="POST">
         @csrf
         @method('PUT')
-         <div class="row">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
@@ -36,13 +36,13 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Email:</strong>
-                    <textarea class="form-control" style="height:150px" name="email" placeholder="Detail">{{ $caderno->users_id }}</textarea>
+                    <strong>user ID:</strong>
+                    <input class="form-control" name="user_id" placeholder="user id" value="{{ $caderno->user_id }}">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>

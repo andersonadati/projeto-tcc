@@ -10,6 +10,6 @@ class Caderno extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'users_id'
+        'name',
     ];
 }

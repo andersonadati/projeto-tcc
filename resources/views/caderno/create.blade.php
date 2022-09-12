@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12" data-validate = "Valid email is: a@b.c">
-                <input class="form-control" type="text" name="users_id">
+                <input class="form-control" type="text" name="user_id">
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

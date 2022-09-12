@@ -21,7 +21,7 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Email</th>
+            <th>user ID</th>
             <th width="280px">Action</th>
         </tr>
 
@@ -29,7 +29,7 @@
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $item->name }}</td>
-            <td>{{ $item->email }}</td>
+            <td>{{ $item->user_id }}</td>
             <td>
                 <form action="{{ route('caderno.destroy',$item->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('caderno.show',$item->id) }}">Show</a>
