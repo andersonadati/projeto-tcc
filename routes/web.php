@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CadernoController;
 use App\Http\Controllers\FolhaCadernoController;
 use App\Http\Controllers\MateriasController;
+use App\Http\Controllers\CategoriasController;
 
 
 
@@ -35,6 +36,8 @@ Route::resource('caderno', CadernoController::class);
 Route::resource('folha', FolhaCadernoController::class);
 
 Route::resource('materias', MateriasController::class);
+
+Route::resource('categorias', CategoriasController::class);
 
 
 
