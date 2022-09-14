@@ -1,4 +1,4 @@
-@extends('user.layout')
+@extends('materias.layout')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -6,7 +6,7 @@
                 <h2>Laravel 9 CRUD Example from scratch - ItSolutionStuff.com</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('user.create') }}"> Create New user</a>
+                <a class="btn btn-success" href="{{ route('materias.create') }}"> Create New materia</a>
             </div>
         </div>
     </div>
@@ -21,19 +21,17 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Email</th>
             <th width="280px">Action</th>
         </tr>
 
-        @foreach ($user as $item)
+        @foreach ($materia as $item)
         <tr>
             <td>{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
-            <td>{{ $item->email }}</td>
             <td>
-                <form action="{{ route('user.destroy',$item->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('user.show',$item->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('user.edit',$item->id) }}">Edit</a>
+                <form action="{{ route('materias.destroy',$item->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('materias.show',$item->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('materias.edit',$item->id) }}">Edit</a>
 
                     @csrf
                     @method('DELETE')

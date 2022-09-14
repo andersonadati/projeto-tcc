@@ -8,7 +8,7 @@
 @section('content')
     <div class="container">
         <?php 
-            //dd($dias) 
+            
         ?>
         @foreach ($materias as $item)
             <div class="cartao">

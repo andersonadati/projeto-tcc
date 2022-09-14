@@ -62,6 +62,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        //dd($user->id);
         return view('user.show',compact('user'));
     }
 

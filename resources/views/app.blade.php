@@ -16,10 +16,13 @@
     <body class="bgblack">
         <div class="j1">
             <ul class="nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('dashboard') }}">Home</a></li>
+                <li><a href="{{ route('agenda.index') }}">Agenda</a></li>
+                <li><a href="{{ route('user.index') }}">User</a></li>
+                <li><a href="{{ route('caderno.index') }}">Caderno</a></li>
+                <li><a href="{{ route('folha.index') }}">Folhas do caderno</a></li>
+                <li><a href="{{ route('materias.index') }}">Materias</a></li>
+                <li><a href="{{ route('categorias.index') }}">Categorias</a></li>
             </ul>
         </div>
         @yield('content')

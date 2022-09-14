@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Materias;
 use Illuminate\Http\Request;
 
-class MateriasController extends Controller
+class MateriaController extends Controller
 {
     public function index()
     {
-        //query
-        $materias = Materias::latest()->paginate(5);
+        $materia = Materias::latest()->paginate(5);
 
-        return view('materias.index',compact('materias'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('materias.index',compact('materia'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
@@ -24,8 +23,7 @@ class MateriasController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'caderno_id' => 'required',
-            'conteudo' => 'required'
+            'agenda_id' => 'required'
         ]);
 
         Materias::create($request->all());
@@ -33,31 +31,31 @@ class MateriasController extends Controller
         return redirect()->route('materias.index')->with('success','materias created successfully.');
     }
 
-    public function show(Materias $materias)
+    public function show(Materias $materia)
     {
-        return view('materias.show',compact('materias'));
+        //dd($materia->id);
+        return view('materias.show',compact('materia'));
     }
 
-    public function edit(Materias $materias)
+    public function edit(Materias $materia)
     {
-        return view('materias.edit',compact('materias'));
+        return view('materias.edit',compact('materia'));
     }
 
-    public function update(Request $request, Materias $materias)
+    public function update(Request $request, Materias $materia)
     {
         $request->validate([
             'name' => 'required',
-            'caderno_id' => 'required',
-            'conteudo' => 'required'
+            'agenda_id' => 'required'
         ]);
 
-        $materias->update($request->all());
+        $materia->update($request->all());
         return redirect()->route('materias.index')->with('success','materias updated successfully');
     }
 
-    public function destroy(Materias $materias)
+    public function destroy(Materias $materia)
     {
-        $materias->delete();
+        $materia->delete();
         return redirect()->route('materias.index')->with('success','materias deleted successfully');
     }
 }
