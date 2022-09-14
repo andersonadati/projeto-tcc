@@ -7,8 +7,8 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                @csrf
-                <form method="POST" action="{{route('auth.user')}}" class="login100-form validate-form">
+                <form action="{{ route('user.store') }}" method="POST" class="login100-form validate-form">
+                    {{ csrf_field() }}
                     <span class="login100-form-title p-b-26">
                         Cadastre-se
                     </span>
@@ -17,7 +17,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-                        <input class="input100" type="text" name="nome">
+                        <input class="input100" type="text" name="name">
                         <span class="focus-input100" data-placeholder="Digite seu nome"></span>
                     </div>
 
@@ -52,11 +52,11 @@
 
                     <div class="text-center p-t-115">
                         <span class="txt1">
-                            Não tem uma conta?
+                            Ja possui uma conta?
                         </span>
 
                         <a class="txt2" href="#">
-                            Registre-se
+                            Fazer Login
                         </a>
                     </div>
                 </form>

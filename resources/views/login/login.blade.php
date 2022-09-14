@@ -14,7 +14,7 @@
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form method="POST" action="{{route('auth.user')}}" class="login100-form validate-form">
+                    <form method="post" action="{{route('auth.user')}}" class="login100-form validate-form">
                         {{ csrf_field() }}
                         <span class="login100-form-title p-b-26">
                             Bem-vindo
@@ -50,7 +50,7 @@
                                 Não tem uma conta?
                             </span>
     
-                            <a class="txt2" href="#">
+                            <a class="txt2" href="{{ route('user.create') }}">
                                 Registre-se
                             </a>
                         </div>
