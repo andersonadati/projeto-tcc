@@ -15,34 +15,28 @@ body {
 }
 
 .nav {
-    height: 82px;
+    height: 62px;
 }
 
 ul {
-    margin: 10px auto;
-    width: 800px;
-    height: 50px;
-    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
 li {
-    margin-top: 26px;
-    display: inline-block;
+    float: left;
 }
 
 li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    color: black;
-    text-transform: uppercase;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: lighter;
-    font-size: 24px;
-    transition: 1s;
-    padding: 25px 30px;
 }
-
-li a:hover {
-    transition: 1s;
-    color: green;
-    background: #333;
+  /* Change the link color to #111 (black) on hover */li a:hover {
+    background-color: #111;
 }
