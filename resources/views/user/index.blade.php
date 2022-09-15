@@ -1,12 +1,19 @@
 @extends('user.layout')
 @section('content')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Laravel 9 CRUD Example from scratch - ItSolutionStuff.com</h2>
+        <div class="col-lg-12 margin-tb d-flex">
+            <div class="pull-left m-4">
+                <h2>Crud de Usuarios</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('user.create') }}"> Create New user</a>
+            <div class="pull-right m-4">
+                <a class="btn btn-success" href="{{ route('user.create') }}">
+                    Create New user
+                </a>
+            </div>
+            <div class="pull-right m-4">
+                <a class="btn btn-primary" href="{{ route('dashboard') }}">
+                    Voltar 
+                </a>
             </div>
         </div>
     </div>
@@ -19,7 +26,7 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th width="280px">Action</th>

@@ -1,12 +1,19 @@
 @extends('caderno.layout')
 @section('content')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Laravel 9 CRUD Example from scratch - ItSolutionStuff.com</h2>
+        <div class="col-lg-12 margin-tb d-flex">
+            <div class="pull-left m-4">
+                <h2>Crud de Cadernos</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('caderno.create') }}"> Create New caderno</a>
+            <div class="pull-right m-4">
+                <a class="btn btn-success" href="{{ route('caderno.create') }}">
+                    Create New Caderno
+                </a>
+            </div>
+            <div class="pull-right m-4">
+                <a class="btn btn-primary" href="{{ route('dashboard') }}">
+                    Voltar 
+                </a>
             </div>
         </div>
     </div>
@@ -27,7 +34,7 @@
 
         @foreach ($caderno as $item)
         <tr>
-            <td>{{ ++$i }}</td>
+            <td>{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->user_id }}</td>
             <td>

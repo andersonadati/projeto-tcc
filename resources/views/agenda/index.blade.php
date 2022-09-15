@@ -1,12 +1,19 @@
 @extends('agenda.layout')
 @section('title', 'lista de Agendas')
-
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('agenda.create') }}"> Create New agenda</a>
             </div>
+        </div>
+        <div class="pull-left m-4">
+            <h2>Crud de Usuarios</h2>
+        </div>
+        <div class="pull-right m-4">
+            <a class="btn btn-primary" href="{{ route('dashboard') }}">
+                Voltar 
+            </a>
         </div>
     </div>
 

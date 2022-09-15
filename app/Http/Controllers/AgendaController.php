@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Agenda;
 use App\Models\Materias;
 use Illuminate\Http\Request;
@@ -11,10 +12,13 @@ class AgendaController extends Controller
 {
     public function index()
     {
-        $agenda = DB::table('agendas')->where('user_id', 1)->first();
-        $materias = DB::table('materias')->orderBy('diasSemana_id')->where('agenda_id', $agenda->id)->get();
-        //dd($materias );
-        return view('dashboard.index',compact('agenda', 'materias'))->with('i', (request()->input('page', 1) - 1) * 5);
+        if (Auth::check()) {
+            $agenda = DB::table('agendas')->where('user_id', 1)->first();
+            $materias = DB::table('materias')->orderBy('diasSemana_id')->where('agenda_id', $agenda->id)->get();
+            //dd($materias );
+            return view('dashboard.index',compact('agenda', 'materias'))->with('i', (request()->input('page', 1) - 1) * 5);
+        }
+        return view('login.login');
     }
 
     public function create()

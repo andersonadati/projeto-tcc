@@ -27,7 +27,7 @@
     <form action="{{ route('agenda.update',$agenda->id) }}" method="POST">
         @csrf
         @method('PUT')
-         <div class="row">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
@@ -38,7 +38,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="user_id" placeholder="Detail">{{ $agenda->detail }}</textarea>
+                    <textarea class="form-control" style="height:150px" name="user_id" placeholder="Detail">{{ $agenda->user_id }}</textarea>
                 </div>
             </div>
 

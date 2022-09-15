@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Product</h2>
+                <h2>Add New Caderno</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('caderno.index') }}"> Back</a>
@@ -13,7 +13,7 @@
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <strong>Erro!</strong> Preencha os campos.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -27,17 +27,18 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <strong>Nome do caderno:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12" data-validate = "Valid email is: a@b.c">
+                <strong>ID do usuario</strong>
                 <input class="form-control" type="text" name="user_id">
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
     </form>

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Product</h2>
+                <h2>Adicionar nova matéria</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('materias.index') }}"> Back</a>
@@ -27,29 +27,21 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <strong>Nome da matéria:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12" data-validate = "Valid email is: a@b.c">
-                <input class="form-control" type="text" name="email">
-                <span class="focus-input100" data-placeholder="Email"></span>
+                <strong>ID da agenda:</strong>
+                <input class="form-control" type="text" name="agenda_id">
+                <span class="focus-input100" data-placeholder="agenda_id"></span>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12" data-validate="Enter password">
-                <span class="btn-show-pass">
-                    <i class="zmdi zmdi-eye"></i>
-                </span>
-                <input class="form-control" type="password" name="password">
-                <span class="focus-input100" data-placeholder="Digite sua senha"></span>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12" data-validate="Enter password">
-                <span class="btn-show-pass">
-                    <i class="zmdi zmdi-eye"></i>
-                </span>
-                <input class="form-control" type="password" name="ConfirmPassword">
-                <span class="focus-input100" data-placeholder="Confirme sua senha"></span>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <strong>Dia:</strong>
+                <input class="form-control" type="text" name="diasSemana_id">
+                <span class="focus-input100" data-placeholder="diasSemana_id"></span>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

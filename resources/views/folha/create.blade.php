@@ -27,22 +27,22 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Name">
+                    <strong>Nome do caderno:</strong>
+                    <input type="text" name="name" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>:</strong>
-                    <input type="text" name="caderno_id" class="form-control" placeholder="Name">
+                    <strong>ID do caderno:</strong>
+                    <input type="text" name="caderno_id" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>conteudo:</strong>
-                    <input type="text" name="conteudo" class="form-control" placeholder="Name">
+                    <strong>Conteudo:</strong>
+                    <input type="text" name="conteudo" class="form-control">
                 </div>
             </div>
 

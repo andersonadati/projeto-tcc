@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', 'Dashboard')
+@section('title', 'Pagina Principal')
 <head>
     <link href="{{ URL::asset('./css/dashboard/index.css') }}" rel="stylesheet" type="text/css">
 
@@ -36,5 +36,25 @@
                 </div>
             </div>
         @endforeach
+        <div class="cartao">
+            <div class="face face1">
+                <div class="content">
+                    <h1>Editar Agenda</h1>
+                    <h3>{{ $agenda->name }}</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <form action="{{ route('agenda.destroy',$agenda->id) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('agenda.show',$agenda->id) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('agenda.edit',$agenda->id) }}">Edit</a>
+        
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

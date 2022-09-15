@@ -24,10 +24,13 @@ class CadernoController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'user_id' => 'required',
         ]);
 
-        Caderno::create($request->all());
+        //Caderno::create($request->all());
+        Caderno::create([
+            'id' => '1',
+            'name' => $request->name
+        ]);
 
         return redirect()->route('caderno.index')->with('success','caderno created successfully.');
     }
