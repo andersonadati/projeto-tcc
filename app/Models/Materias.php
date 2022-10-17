@@ -10,7 +10,7 @@ class Materias extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'agenda_id', 'diasSemana_id'
+        'name', 'agenda_id', 'dia_semana'
     ];
 
     public function materias(){

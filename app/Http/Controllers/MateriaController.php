@@ -24,7 +24,7 @@ class MateriaController extends Controller
         $request->validate([
             'name' => 'required',
             'agenda_id' => 'required',
-            'diasSemana_id' => 'required'
+            'dia_semana' => 'required'
         ]);
 
         Materias::create($request->all());

@@ -13,9 +13,9 @@ class AgendaController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $agenda = DB::table('agendas')->where('user_id', 1)->first();
-            $materias = DB::table('materias')->orderBy('diasSemana_id')->where('agenda_id', $agenda->id)->get();
-            //dd($materias );
+            $user = (Auth::user());
+            $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+            $materias = DB::table('materias')->orderBy('dia_semana')->where('agenda_id', $agenda->id)->get();
             return view('dashboard.index',compact('agenda', 'materias'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
         return view('login.login');

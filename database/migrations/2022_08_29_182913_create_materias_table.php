@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('agenda_id')->references('id')->on('agenda');
-            $table->integer('diasSemana_id')->references('id')->on('dias_semana');
+            $table->integer('dia_semana');
             $table->timestamps();
         });
     }

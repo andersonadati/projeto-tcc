@@ -40,8 +40,8 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong>Dia:</strong>
-                <input class="form-control" type="text" name="diasSemana_id">
-                <span class="focus-input100" data-placeholder="diasSemana_id"></span>
+                <input class="form-control" type="text" name="dia_semana">
+                <span class="focus-input100" data-placeholder="dia_semana"></span>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
