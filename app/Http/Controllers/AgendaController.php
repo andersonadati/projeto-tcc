@@ -31,10 +31,11 @@ class AgendaController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-
+        $user = (Auth::user());
+        
         Agenda::create([
             'name' =>$request->name,
-            'user_id' => 2
+            'user_id' => $user['id']
         ]);
 
         return redirect()->route('agenda.index')->with('success','agenda created successfully.');
@@ -63,6 +64,6 @@ class AgendaController extends Controller
     public function destroy(Agenda $agenda)
     {
         $agenda->delete();
-        return redirect()->route('agenda.index')->with('success','agenda deleted successfully');
+        return redirect()->route('dashboard.index')->with('success','agenda deleted successfully');
     }
 }

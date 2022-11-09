@@ -42,7 +42,8 @@
                 <div class="cartao">
                     <div class="face face1">
                         <div class="content">
-                            <h1>{{ $materias[$i]->dia_semana }}</h1>
+                            <h3>{{ $materias[$i]->dia_semana }}</h3>
+                            <hr size="15" width="95%" align="center" noshade>
                             <h3>{{$materias[$i]->name}}</h3>
                         </div>
                     </div>
@@ -68,10 +69,10 @@
                                     <div class="wrap-login100-form-btn">
                                         <div class="login100-form-bgbtn"></div>
                                         <a href="{{ route('materias.create') }}">
-                                        <button class="login100-form-btn">
-                                            <i class="bi bi-plus-lg" width="52" height="32"></i>
-                                            Adicionar
-                                        </button>
+                                            <button class="login100-form-btn">
+                                                <i class="bi bi-plus-lg" width="52" height="32"></i>
+                                                Adicionar
+                                            </button>
                                     </div>
                                 </div>
                             </a>
@@ -79,12 +80,11 @@
                     </div>
                     <div class="face face2">
                         <div class="content">
-                            <p></p>
+                            
                         </div>
                     </div>
                 </div>
-            @endif
-            
+            @endif     
         @endfor
         <div class="cartao">
             <div class="face face1">

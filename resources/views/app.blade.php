@@ -14,16 +14,23 @@
 
     </head>
     <body class="bgblack">
-        <div class="j1">
-            <ul class="nav">
-                <li><a href="{{ route('dashboard') }}">Home</a></li>
-                <li><a href="{{ route('user.index') }}">User</a></li>
-                <li><a href="{{ route('caderno.index') }}">Caderno</a></li>
-                <li><a href="{{ route('folha.index') }}">Folhas do caderno</a></li>
-                <li><a href="{{ route('materias.index') }}">Materias</a></li>
-                <li><a href="{{ route('categorias.index') }}">Categorias</a></li>
-            </ul>
-        </div>
+        <header>
+            <nav id='cssmenu'>
+                <div id="head-mobile"></div>
+                <div class="button"></div>
+                <ul>
+                    <li class='active'>
+                        <a href="{{ route('dashboard') }}">HOME</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('caderno.index') }}">Caderno</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.index') }}">User</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
         @yield('content')
         <link href="{{ URL::asset('./js/main.js') }}">
     </body>

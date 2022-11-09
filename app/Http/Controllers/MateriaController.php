@@ -57,6 +57,6 @@ class MateriaController extends Controller
     public function destroy(Materias $materia)
     {
         $materia->delete();
-        return redirect()->route('materias.index')->with('success','materias deleted successfully');
+        return redirect()->route('dashboard.index')->with('success','materias deleted successfully');
     }
 }

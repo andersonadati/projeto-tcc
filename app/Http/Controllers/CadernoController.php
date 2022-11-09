@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Caderno;
+use App\Models\FolhaCaderno;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CadernoController extends Controller
 {
     public function index()
     {
         //query
-        $caderno = Caderno::latest()->paginate(5);
+        $user = (Auth::user());
+        $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+        $caderno = DB::table('cadernos')->where('user_id', $user['id'])->first();
+        $folhas = FolhaCaderno::latest()->paginate(5);
 
-        return view('caderno.index',compact('caderno'))->with('i', (request()->input('page', 1) - 1) * 5);
+        if($caderno)
+        return view('caderno.index',compact('caderno', 'folhas'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function create()
