@@ -28,7 +28,7 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Usuário e/ou senha incorretos!',
         ])->onlyInput('email');
     }
 
@@ -50,14 +50,23 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
+        //dd($request->password, $request->ConfirmPassword);
+        if($request->password == $request->ConfirmPassword) {
+            $data = $request->all();
+            $data['password'] = Hash::make($data['password']);
+            try {
+                User::create($data);
+            } catch (Exception $e) {
+                return back()->with('email','Esse email ja esta cadastrado, tente outro!');
+            }
+            return redirect()->route('login.page')->with('success','user created successfully.');
+        } 
+        return back()->withErrors([
+            'password' => 'Confirme se as senhas foram digitadas iguais!',
+        ])->onlyInput('email');
 
-        $data = $request->all();
-        $data['password'] = Hash::make($data['password']);
-        User::create($data);
-
-        return redirect()->route('login.page')->with('success','user created successfully.');
     }
 
     public function show(User $user)

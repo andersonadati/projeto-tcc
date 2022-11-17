@@ -27,7 +27,7 @@
             <p>Some text..</p>
             <p>Some text..</p>
             <p>Some text..</p>
-            <p>Some text..</p>
+            <p>Some text..</p> 
             <p>Some text..</p>
             <p>Some text..</p>
         </div>
