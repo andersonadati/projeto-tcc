@@ -13,14 +13,17 @@ class CadernoController extends Controller
 {
     public function index()
     {
-        //query
-        $user = (Auth::user());
-        $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
-        $caderno = DB::table('cadernos')->where('user_id', $user['id'])->first();
-        $folhas = FolhaCaderno::latest()->paginate(5);
-
-        if($caderno)
-        return view('caderno.index',compact('caderno', 'folhas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        if (Auth::check()) {
+            //query
+            $user = (Auth::user());
+            $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+            $caderno = DB::table('cadernos')->where('user_id', $user['id'])->first();
+            $folhas = FolhaCaderno::latest()->paginate(5);
+    
+            if($caderno)
+            return view('caderno.index',compact('caderno', 'folhas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        }
+        return view('login.login');
     }
 
     public function create()
