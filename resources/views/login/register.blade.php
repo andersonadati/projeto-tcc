@@ -3,6 +3,7 @@
     <head>
         <title>Cadastro de Usuário</title>
         <link href="{{ URL::asset('./css/login/index.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     </head>
     <body>
         <div class="limiter">
@@ -30,17 +31,20 @@
                             <span class="btn-show-pass">
                                 <i class="zmdi zmdi-eye"></i>
                             </span>
-                            <input class="input100" type="password" name="password">
+                            <input class="input100" type="password" id="password" name="password">
                             <span class="focus-input100" data-placeholder="Digite sua senha"></span>
+                            <span class="lnr lnr-eye"></span>
+
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="Enter password">
                             <span class="btn-show-pass">
                                 <i class="zmdi zmdi-eye"></i>
                             </span>
-                            <input class="input100" type="password" name="ConfirmPassword">
+                            <input class="input100" type="password" id="ConfirmPassword" name="ConfirmPassword">
                             <span class="focus-input100" data-placeholder="Confirme sua senha"></span>
+                            <span id="btnConfirm" class="lnr lnr-eye"></span>
                         </div>
-                        @if ($errors->any() <= 2)
+                        @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -72,5 +76,16 @@
                 </div>
             </div>
         </div>
+        <script src="{{ URL::asset('./js/btnVisualizarSenha.js') }}"></script>
+        <script>
+            btnConfirm.addEventListener('click', function() {
+                let input = document.querySelector('#ConfirmPassword');
+                if(input.getAttribute('type') == 'password') {
+                    input.setAttribute('type', 'text');
+                } else {
+                    input.setAttribute('type', 'password');
+                }
+            });
+        </script>
     </body>
 </html>

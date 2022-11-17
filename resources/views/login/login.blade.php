@@ -4,11 +4,9 @@
         <title>Login V2</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-    <!--===============================================================================================-->
         <link href="{{ URL::asset('./css/util.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ URL::asset('./css/login/index.css') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     </head>
     <body class="antialiased">
         <div class="limiter">
@@ -32,8 +30,9 @@
                             <span class="btn-show-pass">
                                 <i class="zmdi zmdi-eye"></i>
                             </span>
-                            <input class="input100" type="password" value="" name="password">
-                            <span class="focus-input100" data-placeholder="Password"></span>
+                            <input class="input100" type="password" id="password" name="password">
+                            <span class="focus-input100" data-placeholder="Senha"></span>
+                            <span class="lnr lnr-eye"></span>
                         </div>
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -70,5 +69,17 @@
     
         <div id="dropDownSelect1"></div>
         <link href="{{ URL::asset('./js/main.js') }}">
+        <link href="{{ URL::asset('./js/btnVisualizarSenha.js') }}">
+        <script>
+            let btn = document.querySelector('.lnr-eye');
+            btn.addEventListener('click', function() {
+                let input = document.querySelector('#password');
+                if(input.getAttribute('type') == 'password') {
+                    input.setAttribute('type', 'text');
+                } else {
+                    input.setAttribute('type', 'password');
+                }
+            });
+        </script>
     </body>
 </html>

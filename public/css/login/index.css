@@ -467,5 +467,9 @@ background: linear-gradient(to right, #000000, #2a2b2c); /* W3C, IE 10+/ Edge, F
   }
 }
 
-
-
+.lnr-eye {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  cursor: pointer;
+}
