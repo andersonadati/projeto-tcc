@@ -20,7 +20,6 @@ class CadernoController extends Controller
             $caderno = DB::table('cadernos')->where('user_id', $user['id'])->first();
             $folhas = FolhaCaderno::latest()->paginate(5);
     
-            if($caderno)
             return view('caderno.index',compact('caderno', 'folhas'))->with('i', (request()->input('page', 1) - 1) * 5);
         }
         return view('login.login');

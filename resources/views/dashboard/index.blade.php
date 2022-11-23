@@ -7,36 +7,6 @@
 
 @section('content')
     <div class="container">
-        <?php 
-            /*
-        @foreach ($materias as $item)
-            <div class="cartao">
-                <div class="face face1">
-                    <div class="content">
-                        <h1>{{ $item->name }}</h1>
-                            <a href="#">
-                                <div class="container-login100-form-btn">
-                                    <div class="wrap-login100-form-btn">
-                                        <div class="login100-form-bgbtn"></div>
-                                        <button class="login100-form-btn">
-                                            <i class="bi bi-plus-lg" width="52" height="32"></i>
-                                            Adicionar
-                                        </button>
-                                    </div>
-                                </div>
-                            </a>
-                    </div>
-                </div>
-                <div class="face face2">
-                    <div class="content">
-
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-        */
-        ?>
         @for ($i = 0; $i <= 6; $i++)
             @if (isset($materias[$i]))
                 <div class="cartao">
@@ -70,7 +40,7 @@
                                         <div class="login100-form-bgbtn"></div>
                                         <a href="{{ route('materias.create') }}">
                                             <button class="login100-form-btn">
-                                                <i class="bi bi-plus-lg" width="52" height="32"></i>
+                                                <i class="bi bi-plus-lg"></i>
                                                 Adicionar
                                             </button>
                                     </div>

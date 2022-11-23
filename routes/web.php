@@ -32,7 +32,6 @@ Route::get('/dashboard', [AgendaController::class, 'index'])->name('dashboard');
 
 //Route::get('/register', [UserController::class, 'login'])->name('login.page');
 
-
 //todos os cruds
 Route::resource('agenda', AgendaController::class);
 

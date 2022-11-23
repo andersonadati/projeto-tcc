@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Materias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 class MateriaController extends Controller
 {
@@ -23,13 +27,16 @@ class MateriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'agenda_id' => 'required',
-            'dia_semana' => 'required'
+        ]);
+        $user = Auth::user();
+        $idAgenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+        Materias::create([
+            'name' => $request->name,
+            'agenda_id' => $idAgenda->id,
+            'dia_semana' => $request->dia_semana
         ]);
 
-        Materias::create($request->all());
-
-        return redirect()->route('materias.index')->with('success','materias created successfully.');
+        return redirect()->route('dashboard')->with('success','materias created successfully.');
     }
 
     public function show(Materias $materia)

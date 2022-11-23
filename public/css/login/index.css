@@ -260,24 +260,20 @@ background: linear-gradient(to right, #000000, #2a2b2c); /* W3C, IE 10+/ Edge, F
 
 .input100:focus + .focus-input100::after {
   top: -15px;
-  content: attr(data-value);
 
 }
 
 .input100:focus + .focus-input100::before {
   width: 100%;
-  content: attr(data-value);
-
 }
 
 .has-val.input100 + .focus-input100::after {
   top: -15px;
-  content: 'attr(data-placeholder)';
 }
 
 .has-val.input100 + .focus-input100::before {
   width: 100%;
-  content: 'attr(data-placeholder)';
+  content: attr(data-value);
 }
 
 /*---------------------------------------------*/
