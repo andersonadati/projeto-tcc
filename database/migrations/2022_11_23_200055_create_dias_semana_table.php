@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materias', function (Blueprint $table) {
+        Schema::create('diasSemana', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('agenda_id')->references('id')->on('agenda');
-            $table->integer('dia_semana');
+            $table->string('dia');
+            $table->integer('agenda_id')->references('id')->on('agendas');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materias');
+        Schema::dropIfExists('diasSemana');
     }
 };
