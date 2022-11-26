@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarefas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TarefasController extends Controller
 {
@@ -14,8 +16,8 @@ class TarefasController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
-        return view('products.index',compact('products'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $tarefas = Tarefas::latest()->paginate(5);
+        return view('dashboard',compact('tarefas'));
     }
 
     /**
@@ -36,21 +38,25 @@ class TarefasController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+        $user = Auth::user();
+        $idAgenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+        //dd( $request->get('dia'));
+        Tarefas::create([
+            'titulo' => $request->titulo,
+            'dias_semana_id' => $request->get('dia'),
+            'agenda_id' => $idAgenda->id
         ]);
-        Product::create($request->all());
-        return redirect()->route('products.index')->with('success','Product created successfully.');
+
+        return redirect()->route('dashboard')->with('success','materias created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Tarefas  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Tarefas $product)
     {
         return view('products.show',compact('product'));
     }
@@ -58,41 +64,47 @@ class TarefasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Tarefas  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Tarefas $tarefa)
     {
-        return view('products.edit',compact('product'));
+        $user = (Auth::user());
+        $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+        $dias = DB::table('dias_semanas')->where('agenda_id', $agenda->id)->get();
+        return view('tarefas.edit',compact('tarefa', 'dias'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Tarefas  
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Tarefas $tarefa)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
+        $user = (Auth::user());
+        $idAgenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+
+        $tarefa->update([
+            'titulo' => $request->titulo,
+            'dias_semana_id' => $request->get('dia'),
+            'agenda_id' => $idAgenda->id
         ]);
-        $product->update($request->all());
-        return redirect()->route('products.index')->with('success','Product updated successfully');
+        return redirect()->route('dashboard')->with('success','Tarefas updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Tarefas  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Tarefas $tarefa)
     {
-        $product->delete();
-        return redirect()->route('products.index')->with('success','Product deleted successfully');
+        $tarefa->delete();
+        return redirect()->route('dashboard')->with('success','Tarefas deleted successfully');
     }
 }
 

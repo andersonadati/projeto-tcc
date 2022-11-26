@@ -3,9 +3,8 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar matéria</h2>
+                <h2>Adicionar nova matéria</h2>
             </div>
-
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('materias.index') }}"> Back</a>
             </div>
@@ -23,33 +22,24 @@
         </div>
     @endif
 
-    <form action="{{ route('materias.update',$materia->id) }}" method="POST">
+    <form action="{{ route('tarefas.store') }}" method="POST">
         @csrf
-        @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Nome da matéria:</strong>
-                    <input type="text" name="name" value="{{ $materia->name }}" class="form-control" placeholder="Name">
+                    <strong>Tarefa:</strong>
+                    <input type="text" name="titulo" class="form-control">
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>ID da agenda:</strong>
-                    <textarea class="form-control" style="height:150px" name="agenda_id" placeholder="Detail">{{ $materia->agenda_id }}</textarea>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Dia da semana:</strong>
-                    <textarea class="form-control" style="height:150px" name="diasSemana_id">{{ $materia->diasSemana_id }}</textarea>
-                </div>
+                <strong>Dia:</strong>
+                <input class="form-control" type="text" name="dias_semana_id">
+                <span class="focus-input100" data-placeholder="dia da semana"></span>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </form>

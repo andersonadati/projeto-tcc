@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Agenda;
-use App\Models\Materias;
+use App\Models\DiaSemana;
+use App\Models\Tarefas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,18 +16,11 @@ class AgendaController extends Controller
         if (Auth::check()) {
             $user = (Auth::user());
             $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
-            $materias = DB::table('materias')->orderBy('dia_semana')->where('agenda_id', $agenda->id)->get();
-            //dd($agenda, $materias);
-            $diasSemana = array(
-                0 => "segunda",
-                1 => "terça",
-                2 => "quarta",
-                3 => "quinta",
-                4 => "sexta",
-                5 => "sabado",
-                6 => "domingo",
-            );
-            return view('dashboard',compact('agenda', 'materias', 'diasSemana'))->with('i', (request()->input('page', 1) - 1) * 5);
+            $dias = DB::table('dias_semanas')->where('agenda_id', $agenda->id)->get();
+
+            $tarefas = DB::table('tarefas')->orderBy('dias_semana_id')->where('agenda_id', $agenda->id)->get();
+            //dd($dias);
+            return view('dashboard',compact('agenda', 'dias', 'tarefas', 'user'));
         }
         return view('login.login');
     }
@@ -68,12 +62,12 @@ class AgendaController extends Controller
         ]);
 
         $agenda->update($request->all());
-        return redirect()->route('agenda.index')->with('success','agenda updated successfully');
+        return redirect()->route('dashboard')->with('success','agenda updated successfully');
     }
 
     public function destroy(Agenda $agenda)
     {
         $agenda->delete();
-        return redirect()->route('dashboard.index')->with('success','agenda deleted successfully');
+        return redirect()->route('dashboard')->with('success','agenda deleted successfully');
     }
 }

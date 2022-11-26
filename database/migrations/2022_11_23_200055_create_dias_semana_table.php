@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('diasSemana', function (Blueprint $table) {
+        Schema::create('diassemana', function (Blueprint $table) {
             $table->id();
             $table->string('dia');
             $table->integer('agenda_id')->references('id')->on('agendas');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diasSemana');
+        Schema::dropIfExists('diassemana');
     }
 };

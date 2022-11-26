@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
-            $table->string('tarefa');
-            $table->integer('dias_semana_id')->references('id')->on('diasSemana');
+            $table->string('titulo');
+            $table->integer('dias_semana_id');
+            $table->integer('agenda_id');
             $table->timestamps();
         });
     }

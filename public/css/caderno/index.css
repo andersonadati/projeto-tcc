@@ -1,9 +1,13 @@
 body {
     margin: 0;
-    background: radial-gradient(circle at 10% 20%, rgb(24, 23, 23) 0%, rgb(64, 64, 64) 90.2%);
-    color: white;
-    font-family: 'Trebuchet MS', sans-serif;
-    }
+    font-family: "Poppins", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #525f7f;
+    text-align: left;
+    background-color: #1e1e2f;
+}
 
     ul {
     list-style-type: none;

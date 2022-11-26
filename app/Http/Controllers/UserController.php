@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Agenda;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -24,7 +28,20 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->start();
-            return redirect('/dashboard');
+
+            $user = Auth::user();
+            $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
+            if(isset($agenda)) {
+                //dd('existe');
+                return redirect('/dashboard');
+            } else {
+                //dd('nao existe');
+                $agendaPadrao = array(
+                    'name' => 'Minha agenda',
+                    'user_id' => $user['id']
+                );
+                Agenda::create($agendaPadrao);
+            }
         }
 
         return back()->withErrors([

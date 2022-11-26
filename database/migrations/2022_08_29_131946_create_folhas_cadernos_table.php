@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('folhas_cadernos', function (Blueprint $table) {
+        Schema::create('folha_cadernos', function (Blueprint $table) {
             $table->id();
             $table->integer('caderno_id')->references('id')->on('cadernos');
             $table->string('name');
