@@ -62,7 +62,7 @@ class AgendaController extends Controller
         ]);
 
         $agenda->update($request->all());
-        return redirect()->route('dashboard.dashboard')->with('success','agenda updated successfully');
+        return redirect()->route('dashboard')->with('success','materias created successfully.');
     }
 
     public function destroy(Agenda $agenda)

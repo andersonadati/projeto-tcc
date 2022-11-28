@@ -38,6 +38,12 @@
                             <h5>cadernos</h5>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('caderno.index')}}">
+                            <i class="tim-icons icon-double-left"></i>
+                            <h5>Voltar</h5>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -97,7 +103,6 @@
                                     <td class="td-actions">
                                         <form action="{{ route('folha.destroy',$folha->id) }}" method="POST">
                                             <a class="btn btn-info" href="{{ route('folha.show',$folha->id) }}">Visualizar</a>
-                                            <a class="btn btn-primary" href="{{ route('folha.edit',$folha->id) }}">Editar</a>
                         
                                             @csrf
                                             @method('DELETE')

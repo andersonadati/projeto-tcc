@@ -329,7 +329,6 @@ input[type="month"] {
 
 textarea {
   overflow: auto;
-  resize: vertical;
 }
 
 fieldset {
@@ -2193,7 +2192,7 @@ select.form-control[multiple] {
 }
 
 textarea.form-control {
-  height: auto;
+  height: 60vh;
 }
 
 .form-group {
@@ -19076,10 +19075,10 @@ fieldset[disabled] .form-control {
 
 textarea.form-control {
   max-width: 100%;
-  max-height: 80px;
+  max-height: 70vh;
   padding: 10px 10px 0 0;
-  resize: none;
-  border: none;
+  resize: vertical;
+  border: horizontal;
   border-bottom: 1px solid #2b3553;
   border-radius: 0;
   line-height: 2;

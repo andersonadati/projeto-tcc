@@ -76,9 +76,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -102,18 +99,15 @@
                                 <hr class="bg-white">
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 2)
-                                        <h3 class="card-title">
+                                        <h3 class="dispplay-inline">
                                             <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
-                                        </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
+                                        </h3>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
@@ -138,9 +132,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -169,9 +160,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -200,9 +188,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -231,9 +216,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -262,9 +244,6 @@
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-info"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
-
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Deletar</button>

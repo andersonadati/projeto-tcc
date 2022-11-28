@@ -53,7 +53,7 @@ class TarefasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tarefas  $product
+     * @param  \App\Models\Tarefas
      * @return \Illuminate\Http\Response
      */
     public function show(Tarefas $product)
@@ -72,7 +72,7 @@ class TarefasController extends Controller
         $user = (Auth::user());
         $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
         $dias = DB::table('dias_semana')->get();
-        return view('tarefas.edit',compact('tarefa', 'dias'));
+        return view('tarefas.edit',compact('tarefa', 'dias', 'user'));
     }
 
     /**

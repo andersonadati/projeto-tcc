@@ -54,7 +54,8 @@ class CadernoController extends Controller
 
     public function edit(Caderno $caderno)
     {
-        return view('caderno.edit',compact('caderno'));
+        $user = (Auth::user());
+        return view('caderno.edit',compact('caderno', 'user'));
     }
 
     public function update(Request $request, Caderno $caderno)
@@ -63,9 +64,10 @@ class CadernoController extends Controller
             'name' => 'required',
             'user_id' => 'required',
         ]);
-
+        $user = (Auth::user());
+        $cadernos = DB::table('cadernos')->where('user_id', $user['id'])->get();
         $caderno->update($request->all());
-        return redirect()->route('caderno.index')->with('success','caderno updated successfully');
+        return redirect()->route('caderno.index')->with('success','caderno deleted successfully');
     }
 
     public function destroy(Caderno $caderno)
