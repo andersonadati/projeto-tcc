@@ -1,35 +1,271 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link href="{{ URL::asset('./css/caderno/index.css') }}" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <ul>
-            <li><a class="active" href="#home">nome</a></li>
-            <li>
-                <h3>Folhas</h3>
-                @foreach ($folhas as $item)
-                <tr>
-                    <td>{{ $item->name }}</td>
-                </tr>
-                @endforeach
-            </li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+<html lang="en">
 
-        <div class="folha-content">
-            <h2>Fixed</h2>
-            <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
-            <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
-            <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is too long (for example if it has over 50 links inside of it).</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p>
-            <p>Some text..</p> 
-            <p>Some text..</p>
-            <p>Some text..</p>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        My Book
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{{ URL::asset('./css/nucleo-icons.css') }}" rel="stylesheet" type="text/css">
+    <!-- CSS Files -->
+    <link href="{{ URL::asset('./css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" type="text/css">
+</head>
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="">
+                        <a href="{{ route('dashboard') }}">
+                            <i class="tim-icons icon-bank"></i>
+                            <h5>Dashboard</h5>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.show', $user->id) }}">
+                            <i class="tim-icons icon-single-02"></i>
+                            <h5>Minha conta</h5>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ route('caderno.index')}}">
+                            <i class="tim-icons icon-notes"></i>
+                            <h5>cadernos</h5>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </body>
+        <div class="main-panel">
+            <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog"
+            aria-labelledby="searchModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="tim-icons icon-simple-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Novo caderno</h1>
+                        <form action="{{ route('caderno.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Nome do caderno:</strong>
+                                        <input type="text" name="name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <button type="submit" class="btn btn-success">Salvar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @if (isset($cadernos))
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>Caderno</th>
+                                <th class="">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($cadernos as $caderno)
+                                <tr>
+                                    <td class="text-center">{{ $caderno->id }}</td>
+                                    <td>{{ $caderno->name }}</td>
+                                    <td class="td-actions">
+                                        <form action="{{ route('caderno.destroy',$caderno->id) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('folha.index',$caderno->id) }}">Visualizar</a>
+                                            <a class="btn btn-primary" href="{{ route('caderno.edit',$caderno->id) }}">Editar</a>
+                        
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @else
+                    <h6>Nao existe cadernos Cadastrados</h6>
+                @endif
+                <div class="fixed-plugin">
+                    <div class="dropdown show-dropdown">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="fa fa-cog fa-2x"> </i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header-title"> Mudar tema</li>
+                            <li class="adjustments-line">
+                                <a href="javascript:void(0)" class="switch-trigger background-color">
+                                    <div class="badge-colors text-center">
+                                        <span class="badge filter badge-info active"
+                                            data-color="info"></span>
+                                        <span class="badge filter badge-info" data-color="blue"></span>
+                                        <span class="badge filter badge-success" data-color="green"></span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </a>
+                            </li>
+                            <li class="adjustments-line text-center color-change">
+                                <span class="color-label">LIGHT MODE</span>
+                                <span class="badge light-badge mr-2"></span>
+                                <span class="badge dark-badge ml-2"></span>
+                                <span class="color-label">DARK MODE</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ URL::asset('js/core/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
+
+    <script src="{{ URL::asset('js/plugins/chartjs.min.js') }}"></script>
+
+    <script src="{{ URL::asset('js/plugins/bootstrap-notify.js') }}"></script>
+
+    <script src="{{ URL::asset('js/black-dashboard.js?v=1.0.0') }}" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            $().ready(function() {
+                $sidebar = $('.sidebar');
+                $navbar = $('.navbar');
+                $main_panel = $('.main-panel');
+
+                $full_page = $('.full-page');
+
+                $sidebar_responsive = $('body > .navbar-collapse');
+                sidebar_mini_active = true;
+                white_color = false;
+
+                window_width = $(window).width();
+
+                fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+
+
+                $('.fixed-plugin a').click(function(event) {
+                    if ($(this).hasClass('switch-trigger')) {
+                        if (event.stopPropagation) {
+                            event.stopPropagation();
+                        } else if (window.event) {
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                });
+
+                $('.fixed-plugin .background-color span').click(function() {
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+
+                    var new_color = $(this).data('color');
+
+                    if ($sidebar.length != 0) {
+                        $sidebar.attr('data', new_color);
+                    }
+
+                    if ($main_panel.length != 0) {
+                        $main_panel.attr('data', new_color);
+                    }
+
+                    if ($full_page.length != 0) {
+                        $full_page.attr('filter-color', new_color);
+                    }
+
+                    if ($sidebar_responsive.length != 0) {
+                        $sidebar_responsive.attr('data', new_color);
+                    }
+                });
+
+                $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
+                    var $btn = $(this);
+
+                    if (sidebar_mini_active == true) {
+                        $('body').removeClass('sidebar-mini');
+                        sidebar_mini_active = false;
+                        blackDashboard.showSidebarMessage('Sidebar mini deactivated...');
+                    } else {
+                        $('body').addClass('sidebar-mini');
+                        sidebar_mini_active = true;
+                        blackDashboard.showSidebarMessage('Sidebar mini activated...');
+                    }
+
+                    // we simulate the window Resize so the charts will get updated in realtime.
+                    var simulateWindowResize = setInterval(function() {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 180);
+
+                    // we stop the simulation of Window Resize after the animations are completed
+                    setTimeout(function() {
+                        clearInterval(simulateWindowResize);
+                    }, 1000);
+                });
+
+                $('.switch-change-color input').on("switchChange.bootstrapSwitch", function() {
+                    var $btn = $(this);
+
+                    if (white_color == true) {
+
+                        $('body').addClass('change-background');
+                        setTimeout(function() {
+                            $('body').removeClass('change-background');
+                            $('body').removeClass('white-content');
+                        }, 900);
+                        white_color = false;
+                    } else {
+
+                        $('body').addClass('change-background');
+                        setTimeout(function() {
+                            $('body').removeClass('change-background');
+                            $('body').addClass('white-content');
+                        }, 900);
+
+                        white_color = true;
+                    }
+
+
+                });
+
+                $('.light-badge').click(function() {
+                    $('body').addClass('white-content');
+                });
+
+                $('.dark-badge').click(function() {
+                    $('body').removeClass('white-content');
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+        window.TrackJS &&
+            TrackJS.install({
+                token: "{TOKEN}",
+                application: "black-dashboard-free"
+            });
+    </script>
+</body>
 </html>

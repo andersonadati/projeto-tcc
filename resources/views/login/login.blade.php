@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="{{ URL::asset('./css/util.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ URL::asset('./css/black-dashboard.css?v=1.0.0') }}" rel="stylesheet" type="text/css">
+
         <link href="{{ URL::asset('./css/login/index.css') }}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     </head>

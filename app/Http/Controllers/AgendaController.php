@@ -16,11 +16,11 @@ class AgendaController extends Controller
         if (Auth::check()) {
             $user = (Auth::user());
             $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
-            $dias = DB::table('dias_semanas')->where('agenda_id', $agenda->id)->get();
-
+            $dias = DB::table('dias_semana')->get();
+            //dd($dias);
             $tarefas = DB::table('tarefas')->orderBy('dias_semana_id')->where('agenda_id', $agenda->id)->get();
             //dd($dias);
-            return view('dashboard',compact('agenda', 'dias', 'tarefas', 'user'));
+            return view('dashboard.dashboard',compact('agenda', 'dias', 'tarefas', 'user'));
         }
         return view('login.login');
     }
@@ -62,12 +62,12 @@ class AgendaController extends Controller
         ]);
 
         $agenda->update($request->all());
-        return redirect()->route('dashboard')->with('success','agenda updated successfully');
+        return redirect()->route('dashboard.dashboard')->with('success','agenda updated successfully');
     }
 
     public function destroy(Agenda $agenda)
     {
         $agenda->delete();
-        return redirect()->route('dashboard')->with('success','agenda deleted successfully');
+        return redirect()->route('dashboard.dashboard')->with('success','agenda deleted successfully');
     }
 }

@@ -17,7 +17,7 @@ class TarefasController extends Controller
     public function index()
     {
         $tarefas = Tarefas::latest()->paginate(5);
-        return view('dashboard',compact('tarefas'));
+        return view('dashboard.dashboard',compact('tarefas'));
     }
 
     /**
@@ -71,7 +71,7 @@ class TarefasController extends Controller
     {
         $user = (Auth::user());
         $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
-        $dias = DB::table('dias_semanas')->where('agenda_id', $agenda->id)->get();
+        $dias = DB::table('dias_semana')->get();
         return view('tarefas.edit',compact('tarefa', 'dias'));
     }
 

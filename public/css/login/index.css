@@ -350,11 +350,8 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #000;
-  background: -webkit-linear-gradient(right, #0dd62e, #2b2a2c, #0dd62e, #2b2a2c);
-  background: -o-linear-gradient(right, #0dd62e, #2b2a2c, #0dd62e, #2b2a2c);
-  background: -moz-linear-gradient(right, #0dd62e, #2b2a2c, #0dd62e, #2b2a2c);
-  background: linear-gradient(right, #0dd62e, #2b2a2c, #0dd62e, #2b2a2c);
+  background-color: #00f2c3;
+  border-color: #00f2c3;
   top: 0;
   left: -100%;
 
@@ -385,6 +382,9 @@ iframe {
 
 .wrap-login100-form-btn:hover .login100-form-bgbtn {
   left: 0;
+  color: #ffffff;
+  background-color: #00cca4;
+  border-color: #00bf9a;
 }
 
 

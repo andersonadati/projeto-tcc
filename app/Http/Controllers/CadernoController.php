@@ -17,10 +17,9 @@ class CadernoController extends Controller
             //query
             $user = (Auth::user());
             $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
-            $caderno = DB::table('cadernos')->where('user_id', $user['id'])->first();
-            $folhas = FolhaCaderno::latest()->paginate(5);
-    
-            return view('caderno.index',compact('caderno', 'folhas'))->with('i', (request()->input('page', 1) - 1) * 5);
+            $cadernos = DB::table('cadernos')->where('user_id', $user['id'])->get();
+            //dd($cadernos);
+            return view('caderno.index',compact('cadernos', 'user'));
         }
         return view('login.login');
     }
@@ -35,11 +34,11 @@ class CadernoController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
+        $user = (Auth::user());
 
-        //Caderno::create($request->all());
         Caderno::create([
-            'id' => '1',
-            'name' => $request->name
+            'name' => $request->name,
+            'user_id' => $user['id']
         ]);
 
         return redirect()->route('caderno.index')->with('success','caderno created successfully.');
@@ -47,7 +46,10 @@ class CadernoController extends Controller
 
     public function show(Caderno $caderno)
     {
-        return view('caderno.show',compact('caderno'));
+        $user = (Auth::user());
+        $folhas = DB::table('folha_cadernos')->where('caderno_id', $caderno->id)->get();
+        //dd($folhas);
+        return view('caderno.show',compact('folhas', 'user', 'caderno'));
     }
 
     public function edit(Caderno $caderno)

@@ -12,8 +12,4 @@ class Agenda extends Model
     protected $fillable = [
         'name', 'user_id'
     ];
-
-    public function agenda(){
-        return $this->hasMany(Materias::class, "agenda_id");
-     }
 }

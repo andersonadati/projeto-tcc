@@ -28,20 +28,20 @@
                 <ul class="nav">
                     <li class="active ">
                         <a href="{{ route('dashboard') }}">
-                            <i class="tim-icons icon-home"></i>
-                            <p>Dashboard</p>
+                            <i class="tim-icons icon-bank"></i>
+                            <h5>Dashboard</h5>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('user.show', $user->id) }}">
-                            <i class="tim-icons icon-atom"></i>
-                            <p>Minha conta</p>
+                            <i class="tim-icons icon-single-02"></i>
+                            <h5>Minha conta</h5>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('caderno.index') }}">
                             <i class="tim-icons icon-notes"></i>
-                            <p>Meus Cadernos</p>
+                            <h5>Meus Cadernos</h5>
                         </a>
                     </li>
                 </ul>
@@ -62,7 +62,6 @@
                     </div>
                 </div>
             </div>
-            <!-- End Navbar -->
             <div class="content">
                 <div class="row">
                     <div class="col-lg-3">
@@ -73,23 +72,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 1)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -104,23 +103,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 2)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -135,23 +134,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 3)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -166,23 +165,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 4)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -197,23 +196,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 5)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -228,23 +227,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 6)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -259,23 +258,23 @@
                                 @foreach ($tarefas as $tarefa)
                                     @if ($tarefa->dias_semana_id === 7)
                                         <h3 class="card-title">
-                                            <i class="tim-icons icon-pin text-primary"></i>
+                                            <i class="tim-icons icon-pin text-info"></i>
                                             {{ $tarefa->titulo }}
                                         </h3>
                                         <form action="{{ route('tarefas.destroy', $tarefa->id) }}" method="POST">
-                                            <a class="btn btn-primary"
-                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Edit</a>
+                                            <a class="btn btn-info"
+                                                href="{{ route('tarefas.edit', $tarefa->id) }}">Editar</a>
 
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Deletar</button>
                                         </form>
                                         <hr class="bg-white">
                                     @endif
                                 @endforeach
                                 @if (!isset($tarefa))
                                     <h4 class="card-title">
-                                        <i class="tim-icons icon-pin text-primary"></i>
+                                        <i class="tim-icons icon-pin text-info"></i>
                                         Sem Tarefas
                                     </h4>
                                 @endif
@@ -304,7 +303,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-success">Salvar</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -331,17 +330,19 @@
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <strong>Dia:</strong>
-                                                    <select name="dia">
-                                                        @foreach ($dias as $dia)
-                                                            <option value="{!! $dia->id !!}">
-                                                                {!! $dia->dia !!}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <div class="form-group">
+                                                        <strong>Dia:</strong>
+                                                        <select name="dia">
+                                                            @foreach ($dias as $dia)
+                                                                <option value="{!! $dia->id !!}">
+                                                                    {!! $dia->dia !!}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-success">Salvar</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -357,12 +358,12 @@
                                 <i class="fa fa-cog fa-2x"> </i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header-title"> Sidebar Background</li>
+                                <li class="header-title"> Mudar tema</li>
                                 <li class="adjustments-line">
                                     <a href="javascript:void(0)" class="switch-trigger background-color">
                                         <div class="badge-colors text-center">
-                                            <span class="badge filter badge-primary active"
-                                                data-color="primary"></span>
+                                            <span class="badge filter badge-info active"
+                                                data-color="info"></span>
                                             <span class="badge filter badge-info" data-color="blue"></span>
                                             <span class="badge filter badge-success" data-color="green"></span>
                                         </div>
@@ -378,6 +379,10 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
                     <script src="{{ URL::asset('js/core/jquery.min.js') }}" type="text/javascript"></script>
                     <script src="{{ URL::asset('js/core/popper.min.js') }}" type="text/javascript"></script>

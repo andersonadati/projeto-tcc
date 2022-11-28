@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Agenda;
+use App\Models\DiasSemana;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,14 +33,34 @@ class UserController extends Controller
             $user = Auth::user();
             $agenda = DB::table('agendas')->where('user_id', $user['id'])->first();
             if(isset($agenda)) {
-                //dd('existe');
                 return redirect('/dashboard');
             } else {
-                //dd('nao existe');
                 $agendaPadrao = array(
                     'name' => 'Minha agenda',
                     'user_id' => $user['id']
                 );
+                $segunda = array([
+                    'dia' => 'segunda',
+                ]);
+                $terca = array([
+                    'dia' => 'terça',
+                ]);
+                $quarta = array([
+                    'dia' => 'quarta',
+                ]);
+                $quinta = array([
+                    'dia' => 'quinta',
+                ]);
+                $sexta = array([
+                    'dia' => 'sexta',
+                ]);
+                $sabado = array([
+                    'dia' => 'sábado',
+                ]);
+                $domingo = array([
+                    'dia' => 'domingo',
+                ]);
+                //dd($dias);
                 Agenda::create($agendaPadrao);
             }
         }
@@ -52,7 +73,7 @@ class UserController extends Controller
     public function index()
     {
         //query
-        $user = User::latest()->paginate(5);
+        $user = User::latest()->first();
 
         return view('user.index',compact('user'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -89,7 +110,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         //dd($user->id);
-        return view('user.show',compact('user'));
+        return view('user',compact('user'));
     }
 
     public function edit(User $user)
@@ -105,7 +126,7 @@ class UserController extends Controller
         ]);
 
         $user->update($request->all());
-        return redirect()->route('user.index')->with('success','user updated successfully');
+        return back()->with('success','user updated successfully');
     }
 
     public function destroy(User $user)

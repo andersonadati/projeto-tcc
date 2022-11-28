@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('diassemana', function (Blueprint $table) {
+        Schema::create('dias_semana', function (Blueprint $table) {
             $table->id();
             $table->string('dia');
-            $table->integer('agenda_id')->references('id')->on('agendas');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diassemana');
+        Schema::dropIfExists('dias_semana');
     }
 };

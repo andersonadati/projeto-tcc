@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->integer('dias_semana_id');
-            $table->integer('agenda_id');
+            $table->unsignedBigInteger('dias_semana_id');
+            $table->foreign('dias_semana_id')->references('id')->on('dias_semana');
+            $table->unsignedBigInteger('agenda_id');
+            $table->foreign('agenda_id')->references('id')->on('agendas');;
             $table->timestamps();
         });
     }

@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('folha_cadernos', function (Blueprint $table) {
             $table->id();
-            $table->integer('caderno_id')->references('id')->on('cadernos');
+            $table->unsignedBigInteger('caderno_id');
+            $table->foreign('caderno_id')->references('id')->on('cadernos');
             $table->string('name');
             $table->string('conteudo');
             $table->timestamps();
